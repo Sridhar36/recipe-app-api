@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .  # Build context is the current directory
+      args:
+        DEV: "true"  # Pass the build argument with a key-value pair
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: 
+      python manage.py runserver 0.0.0.0:8000  # Run the Django development server
+
+
+
+# version: "3.9"
+
+# services:
+#   app:
+#     build:
+#       context: .  # Add the build context here, assuming your Dockerfile is in the current directory
+#       args:
+#         DEV=true
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./app:/app
+#     command: 
+#       sh -C "python manage.py runserver 0.0.0.0:8000"  # Directly running the command without the need for `sh -C`
